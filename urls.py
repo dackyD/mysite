@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
-from mysite.views import hello, current_datetime, hours_ahead, template_example
+#from mysite.views import hello, current_datetime, hours_ahead, template_example, herald_sample_view
+from mysite.views import *
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -10,6 +11,7 @@ urlpatterns = patterns('',
     ('^time/$', current_datetime),
     (r'^time/plus/(\d{1,2})/$', hours_ahead),
     ('^template/$', template_example),
+    url('^theherald/$', herald_sample_view),
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^mysite/', include('mysite.foo.urls')),

@@ -2,6 +2,8 @@ __author__ = 'harvey'
 
 from django.http import HttpResponse, Http404
 from django.template import Template, Context
+from django.shortcuts import render_to_response
+
 import datetime
 
 def hello(request):
@@ -11,8 +13,9 @@ def hello(request):
 
 def current_datetime(request):
     now = datetime.datetime.now()
-    html = "<html><body> it is now %s.</body></html>" % now
-    return HttpResponse(html)
+    #html = "<html><body> it is now %s.</body></html>" % now
+    #return HttpResponse(html)
+    return render_to_response('current_datetime.html', {'current_date': now})
 
 
 def hours_ahead(request, offset):
@@ -22,8 +25,9 @@ def hours_ahead(request, offset):
         print "Error:{0}".format(err)
         return Http404()
     dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
-    html = "<html><body> In %s hours(s), it will be %s. </body></html>" % (offset, dt)
-    return HttpResponse(html)
+    #html = "<html><body> In %s hours(s), it will be %s. </body></html>" % (offset, dt)
+    #return HttpResponse(html)
+    return render_to_response('hours_ahead.html', {'hour_offset':offset, 'next_time':dt})
 
 def template_example(request):
     raw_template = """
@@ -54,4 +58,10 @@ def template_example(request):
     item_list = ['harvey', 'dave', 'daclan']
     c = Context({'item_list':item_list})
     return HttpResponse(t.render(c))
+
+
+def herald_sample_view(request):
+    now = datetime.datetime.now()
+    return render_to_response('theHerald.html')
+
 
