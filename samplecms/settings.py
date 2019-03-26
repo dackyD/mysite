@@ -138,6 +138,7 @@ INSTALLED_APPS = [
     'djangocms_snippet',
     'djangocms_googlemap',
     'djangocms_video',
+    'rest_framework',
     'samplecms',
     'sampleplugin',
     'blog'
@@ -194,6 +195,12 @@ CMS_PLACEHOLDER_CONF = {
             'Menu_Item_Plugin': 'Add Menu Item'
         }
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
+    ]
 }
 
 DATABASES = {

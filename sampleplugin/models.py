@@ -12,7 +12,7 @@ class Daily_Specials(CMSPlugin):
         verbose_name = "Daily Special"
         verbose_name_plural = "Daily Specials"
         
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % (self.name, )
     
 class Menu_Item(CMSPlugin):
@@ -22,5 +22,5 @@ class Menu_Item(CMSPlugin):
     description = models.TextField()
     url = models.CharField(max_length=200)
     
-    def __unicode__(self):
+    def __str__(self):
         return "%s" % (self.name,)

@@ -9,7 +9,13 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
 
+from rest_framework import routers
+from api.views import MenuItemViewSet
+
 admin.autodiscover()
+
+router = routers.DefaultRouter()
+router.register(r'menu-items', MenuItemViewSet)
 
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
@@ -18,6 +24,7 @@ urlpatterns = [
 
 urlpatterns += [
     url(r'^admin/', admin.site.urls),  # NOQA
+    url(r'^api/', include(router.urls)),
     url(r'^', include('cms.urls')),
 ]
 

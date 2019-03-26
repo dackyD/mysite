@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import *
+from blog.models import Post, Category
 
 def post(request, p_id):
     context = {}
