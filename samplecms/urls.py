@@ -10,12 +10,14 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
 
 from rest_framework import routers
-from api.views import MenuItemViewSet
+from api.views import MenuItemViewSet, PostViewSet, CategoryViewSet
 
 admin.autodiscover()
 
 router = routers.DefaultRouter()
 router.register(r'menu-items', MenuItemViewSet)
+router.register(r'post', PostViewSet)
+router.register(r'category', CategoryViewSet)
 
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
